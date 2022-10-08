@@ -1,3 +1,5 @@
+package bead2;
+
 public class SumRunnable implements Runnable{
 
     private int[] arr;

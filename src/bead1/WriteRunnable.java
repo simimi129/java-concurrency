@@ -1,3 +1,5 @@
+package bead1;
+
 public class WriteRunnable implements Runnable{
 
     int id;
