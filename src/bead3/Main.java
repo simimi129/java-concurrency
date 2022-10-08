@@ -3,6 +3,8 @@ package bead3;
 import java.util.Arrays;
 
 public class Main {
+    static volatile int max = 0;
+
     static int maxArr(int[] arr) throws InterruptedException {
         int split = arr.length / 2;
         int[] a = Arrays.copyOfRange(arr, 0, split);
@@ -17,17 +19,14 @@ public class Main {
         t1.start();
         t2.start();
 
-        t1.join();
         t2.join();
+        t1.join();
 
-        int result1 = max1.getMax();
-        int result2 = max2.getMax();
-
-        return Math.max(result1, result2);
+        return max;
     }
 
     public static void main(String[] args) throws InterruptedException {
-        int[] arr = {1, 2, 3, 4, 5, 6};
+        int[] arr = {1, 2, 3, 2, 3, 4};
         System.out.println(maxArr(arr));
     }
 }
